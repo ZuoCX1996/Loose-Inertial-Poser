@@ -9,4 +9,4 @@ Run **train_poser.py** to train pose estimation network.
 
 Run **evaluation.py** to get ang Err and pos Err.
 
-All required datasets are available at 
+[//]: # (All required datasets are available at )
