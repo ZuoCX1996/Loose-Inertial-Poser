@@ -1,0 +1,6 @@
+| epoch: 20 | recon_err_train: 2.914480209350586 | deart_err_train: 7.084332466125488 | recon_err_eval: 4.820566654205322 | deart_err_eval: 8.513467788696289 |
+
+dloss_weight = None
+[128 64 32] -> 12
+
+12 -> [32，64, 128] ->out

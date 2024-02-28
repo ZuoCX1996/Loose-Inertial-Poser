@@ -1,0 +1,9 @@
+deart tensor([ 8.7843, 10.0014, 15.9608,  6.3300])
+| epoch: 28 | recon_err_train: 7.073688983917236 | deart_err_train: 8.448280334472656 | recon_err_eval: 6.09445858001709 | deart_err_eval: 10.269125938415527 |
+
+dloss_weight = 2
+[128 64 64] -> 12
+
+12 -> [64, 128] ->out
+
+与上一版本不同，是从头开始训练的。只要domain loss约束较大，重建误差就一直降不下去
