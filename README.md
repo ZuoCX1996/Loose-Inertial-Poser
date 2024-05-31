@@ -9,4 +9,7 @@ Run **train_poser.py** to train pose estimation network.
 
 Run **evaluation.py** to get ang Err and pos Err.
 
+The real-world dataset is in the folder named **LIP_Dataset**, please notice that the original data frame rate is **60Hz**, and it was downsampled to 30Hz in our implementation.
+
+ The original data frame rate is 60Hz, and it was downsampled to 30Hz which is a 50% reduction.
 [//]: # (All required datasets are available at )
