@@ -14,8 +14,7 @@ class joint_set:
     # index_pose = torch.tensor([3, 6, 9, 12, 16, 17, 18, 19])
     index_pose = torch.tensor([0, 3, 6, 9, 13, 14, 16, 17, 18, 19])
     index_joint = torch.tensor([3, 6, 9, 13, 14, 16, 17, 18, 19, 20, 21])
-    internal_joint = torch.tensor([0, 3, 6, 9, 13, 14])
-    external_joint = torch.tensor([16, 17, 18, 19])
+
 
     index_l_elbow = 20
     index_r_elbow = 21
@@ -35,7 +34,7 @@ class paths:
     raw_dipimu_dir = 'data/dataset_raw/DIP_IMU'   # raw DIP-IMU dataset path (raw_dipimu_dir/s_01/*.pkl)
     dipimu_dir = 'E:\DATA\processed_DIP'      # output path for the preprocessed DIP-IMU dataset
 
-    lip_dir = 'E:\DATA\LIP-IMU'
+    lip_dir = './LIP_Dataset'
 
     # smpl_file = 'models/SMPL_male.pkl'              # official SMPL model path
     smpl_file = 'E:\DATA\smpl\smpl/SMPL_MALE.pkl'  # official SMPL model path
