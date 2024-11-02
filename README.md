@@ -13,5 +13,8 @@ The real-world dataset is in the folder named **LIP_Dataset**, please notice tha
 
 The original data frame rate is 60Hz, and it was down sampled to 30Hz which is a 50% reduction.
 
-The synthesized IMU data using TailorNet is available on Baidu Cloud:
-https://pan.baidu.com/s/1UmFCHvt3pqIYixuuCqBqWg?pwd=nmyr
+The synthesized IMU data using TailorNet is available at the following links:
+
+Baidu Cloud: https://pan.baidu.com/s/1UmFCHvt3pqIYixuuCqBqWg?pwd=nmyr
+
+OneDrive: https://1drv.ms/f/c/d6cd78cd7ce83043/Etl3HdtmHl5Dn05NQ-ZKScMBYsCo4gTef7Io3JVZb07nxQ?e=UMXx0e
