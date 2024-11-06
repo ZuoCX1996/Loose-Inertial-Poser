@@ -18,3 +18,7 @@ The synthesized IMU data using TailorNet is available at the following links:
 Baidu Cloud: https://pan.baidu.com/s/1UmFCHvt3pqIYixuuCqBqWg?pwd=nmyr
 
 OneDrive: https://1drv.ms/f/c/d6cd78cd7ce83043/Etl3HdtmHl5Dn05NQ-ZKScMBYsCo4gTef7Io3JVZb07nxQ?e=UMXx0e
+
+The synthesized IMU data ON AMASS (Match the TailorNet syn IMU data) is available at the following links:
+:
+https://1drv.ms/f/c/d6cd78cd7ce83043/Eqz0kup3E0NEpr0j0A9R8DIBb4Jr0D-PS2MnQtYKJjCdzQ?e=urBJ6m
