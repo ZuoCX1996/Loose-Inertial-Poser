@@ -3,16 +3,23 @@
 
 Implementation of our CVPR 2024 paper "Loose Inertial Poser: Motion Capture with IMU-attached Loose-Wear Jacket". Including network weights, training and evaluation scripts.
 
-Run **train_SemoAE.py** to train SeMo-AE.
+Run [train_SemoAE.py](./train_SemoAE.py) to train SeMo-AE.
 
-Run **train_poser.py** to train pose estimation network.
+Run [train_poser.py](./train_poser.py) to train pose estimation network.
 
-Run **evaluation.py** to get ang Err and pos Err.
+Run [evaluation.py](./evaluation.py) to get ang Err and pos Err.
 
+## Live Demo 
+1. Prepare the pose visualization unity project. You can find it at TransPose project page: https://github.com/Xinyu-Yi/TransPose
+2. Run [live demo.py](./live%20demo.py)
+3. Run unity visualization
+
+## LIP Dataset
 The real-world dataset is in the folder named **LIP_Dataset**, please notice that the original data frame rate is **60Hz**, and it was downsampled to 30Hz in our implementation.
 
 The original data frame rate is 60Hz, and it was down sampled to 30Hz which is a 50% reduction.
 
+## Synthesized IMU data
 The synthesized IMU data using TailorNet is available at the following links:
 
 Baidu Cloud: https://pan.baidu.com/s/1UmFCHvt3pqIYixuuCqBqWg?pwd=nmyr
