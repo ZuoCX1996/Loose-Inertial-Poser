@@ -72,7 +72,7 @@ visualizer(p=pred, t=gt)
 load_pose = False # edit
 if load_pose:
     visualizer.pred_24x3x3 = torch.load(f'{paths.vis_dir}/pred_24x3x3.pt'); print('\npred_24x3x3.size(): ', pred_24x3x3.size()) # predictions (Pred) of rotations
-    visualizer.gt_24x3x3 = torch.load(f'{paths.vis_dir}/gt_24x3x3.pt'); print('\ngt_24x3x3.size(): ', gt_24x3x3.size()) # ground truth (GT) of ratations
+    visualizer.gt_24x3x3 = torch.load(f'{paths.vis_dir}/gt_24x3x3.pt'); print('\ngt_24x3x3.size(): ', gt_24x3x3.size()) # ground truth (GT) of rotations
     visualizer.tran_3 = torch.load(f'{paths.vis_dir}/tran_3.pt'); print('\ntran_3.size(): ', tran_3.size()) # Translation
 
 '''
