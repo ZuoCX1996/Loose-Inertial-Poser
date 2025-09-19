@@ -39,5 +39,7 @@ class paths:
     # smpl_file = 'models/SMPL_male.pkl'              # official SMPL model path
     smpl_file = 'E:\DATA\smpl\smpl/SMPL_MALE.pkl'  # official SMPL model path
 
+    vis_dir = './data/vis' # output path for visualization
+
 acc_scale = 30
 vel_scale = 3

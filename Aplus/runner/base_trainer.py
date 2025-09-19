@@ -1,3 +1,5 @@
+import sys
+import os
 from Aplus.utils import LogManager
 from Aplus.utils import CheckPoint
 import torch
@@ -56,6 +58,8 @@ class BaseTrainer:
         :param path: e.g. './log.xlsx'
         :return: None
         """
+        cmd = f'touch {path}'
+        os.system(cmd); print(cmd)
         self.log_manager.to_excel(path)
 
     def get_model_device(self):

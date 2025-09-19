@@ -678,7 +678,7 @@ class PoseEvaluator:
             t = r6d_to_rotation_matrix(t).reshape(-1, joint_num, 3, 3)
             # t = rotation_matrix_to_axis_angle(t).reshape(-1, joint_num, 3)
 
-            p_full_body = torch.eye(3).reshape(1,1,3,3).repeat(len(p), 24, 1, 1)
+            p_full_body = torch.eye(3).reshape(1, 1, 3, 3).repeat(len(p), 24, 1, 1)
             p_full_body[:, self.index_pose] = p
 
             t_full_body = torch.eye(3).reshape(1, 1, 3, 3).repeat(len(p), 24, 1, 1)
@@ -742,7 +742,7 @@ class PoseEvaluatorWithStd:
                 t = r6d_to_rotation_matrix(t).reshape(-1, joint_num, 3, 3)
                 # t = rotation_matrix_to_axis_angle(t).reshape(-1, joint_num, 3)
 
-                p_full_body = torch.eye(3).reshape(1,1,3,3).repeat(len(p), 24, 1, 1)
+                p_full_body = torch.eye(3).reshape(1, 1, 3, 3).repeat(len(p), 24, 1, 1)
                 p_full_body[:, self.index_pose] = p
 
                 t_full_body = torch.eye(3).reshape(1, 1, 3, 3).repeat(len(p), 24, 1, 1)
@@ -771,3 +771,58 @@ class PoseEvaluatorWithStd:
         print(f'平均关节位置误差: {position_err.mean()} ± {position_err.std()}')
         print(f'平均各关节位置误差: {per_position_err.mean(dim=0)}')
 
+
+class PoseVisualizer:
+    def __init__(self, rot_type='r6d', index_joint=[3, 6, 9, 13, 14, 16, 17, 18, 19, 20, 21],
+                 index_pose=[0, 3, 6, 9, 13, 14, 16, 17, 18, 19]):
+        self.index_joint = index_joint
+        self.index_pose = index_pose
+        self.body_model = art.ParametricModel('../TransPose/models/SMPL_male.pkl')
+        # '/media/brcao/eData4TB1/Repos/bryanbocao/sparseimu/TransPose/models/SMPL_male.pkl') # edit # art.ParametricModel('E:\DATA\smpl\smpl/SMPL_MALE.pkl')
+
+        if rot_type == 'r6d':
+            rep = RotationRepresentation.R6D
+        elif rot_type == 'axis_angle':
+            rep = RotationRepresentation.AXIS_ANGLE
+        self.rot_type = rot_type
+
+        self.pred_24x3x3 = None
+        self.gt_24x3x3 = None
+        self.tran_3 = None
+
+    @torch.no_grad()
+    def __call__(self, p: torch.Tensor, t: torch.Tensor):
+        p = p.cpu()
+        t = t.cpu()
+        joint_num = len(self.index_pose)
+        # mjre = self.rot_err_evaluator(p, t)
+        # mpjre = self.per_joint_rot_err_evaluator(p, t, joint_num=joint_num)
+        if self.rot_type == 'r6d':
+            p = p.reshape(-1, 6)
+            t = t.reshape(-1, 6)
+
+            p = r6d_to_rotation_matrix(p).reshape(-1, joint_num, 3, 3)
+            # p = rotation_matrix_to_axis_angle(p).reshape(-1, joint_num, 3)
+
+            t = r6d_to_rotation_matrix(t).reshape(-1, joint_num, 3, 3)
+            # t = rotation_matrix_to_axis_angle(t).reshape(-1, joint_num, 3)
+
+            p_full_body = torch.eye(3).reshape(1, 1, 3, 3).repeat(len(p), 24, 1, 1)
+            p_full_body[:, self.index_pose] = p
+
+            t_full_body = torch.eye(3).reshape(1, 1, 3, 3).repeat(len(p), 24, 1, 1)
+            t_full_body[:, self.index_pose] = t
+
+        shape = torch.zeros(10)
+        tran = torch.zeros(len(p_full_body), 3)
+
+        self.pred_24x3x3, self.gt_24x3x3, self.tran_3 = p_full_body, t_full_body, tran
+        
+        # Save joints for visualization
+        os.makedirs(paths.vis_dir, exist_ok=True)
+        pred_24x3x3_path = f'{paths.vis_dir}/pred_24x3x3.pt' # edit
+        gt_24x3x3_path = f'{paths.vis_dir}/gt_24x3x3.pt' # edit
+        tran_3_path = f'{paths.vis_dir}/tran_3.pt' # edit
+        torch.save(self.pred_24x3x3, pred_24x3x3_path); print(f'{pred_24x3x3_path} saved!')
+        torch.save(self.gt_24x3x3, gt_24x3x3_path); print(f'{gt_24x3x3_path} saved!')
+        torch.save(self.tran_3, tran_3_path); print(f'{tran_3_path} saved!')

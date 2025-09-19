@@ -9,6 +9,8 @@ Run [train_poser.py](./train_poser.py) to train pose estimation network.
 
 Run [evaluation.py](./evaluation.py) to get ang Err and pos Err.
 
+Run [vis_pose.py](./vis_pose.py) to visualize pose predictions or ground truth.
+
 ## Live Demo 
 1. Prepare the pose visualization unity project. You can find it at TransPose project page: https://github.com/Xinyu-Yi/TransPose
 2. Run [live demo.py](./live%20demo.py)
